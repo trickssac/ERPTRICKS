@@ -121,21 +121,6 @@ model Producto {
   inventarios           Inventario[]
   movimientosInventario MovimientoInventario[]
   ordenesProduccionBase OrdenProduccion[]
-  ProductoImagen ProductoImagen[]
-}
-
-model ProductoImagen {
-  id          String   @id @default(cuid())
-  productoId  String
-  url         String
-  alt         String?
-  orden       Int      @default(0)
-  esPrincipal Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  producto    Producto @relation(fields: [productoId], references: [id], onDelete: Cascade)
-
-  @@index([productoId])
 }
 
 model Almacen {
